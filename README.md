@@ -1,5 +1,5 @@
 
-# Network Anomaly Detector (K-Means)
+# Sistem Deteksi Anomali Trafik Jaringan dengan Metode K-Means Clustering
 
 Aplikasi ini merupakan sistem deteksi anomali trafik jaringan berbasis metode K-Means Clustering. Sistem dapat berjalan dalam dua mode, yaitu real-time capture dan analisis file PCAP (offline). Aplikasi dibangun menggunakan Streamlit, Scikit-Learn, serta tools analisis jaringan seperti TShark, PyShark, dan Scapy.
 
