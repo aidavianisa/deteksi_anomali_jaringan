@@ -66,7 +66,7 @@ Jika belum ada `requirements.txt`, install manual:
 
 Jalankan aplikasi Streamlit:
 
-    streamlit run app.py
+    streamlit run deteksi_anomali.py
 
 Setelah itu buka browser:
 
