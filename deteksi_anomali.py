@@ -146,6 +146,8 @@ def add_temporal_features(df):
         0
     )
 
+    #df['throughput'] = df['throughput_raw']
+
     window = 5
     df['throughput_smooth'] = df['throughput_raw'].rolling(window=window, min_periods=1).mean()
     df['throughput'] = np.log1p(df['throughput_smooth'])
@@ -408,7 +410,8 @@ if mode == "Real-Time Capture":
 
         # Tampilkan data paket
         df_display = df_result[['time', 'src', 'dst', 'protocol', 'packet_length',
-                                'iat', 'throughput', 'jitter_rfc', 'cluster', 'distance', 'anomaly']].copy()
+                        'iat', 'throughput_raw', 'jitter_rfc', 'cluster', 'distance', 'anomaly']].copy()
+        df_display = df_display.rename(columns={'throughput_raw': 'throughput'})
         df_display['time'] = df_display['time'].apply(epoch_to_human)
         # Bulatkan agar lebih rapi
         df_display['iat'] = df_display['iat'].round(3)
@@ -517,7 +520,8 @@ else:
                 # Tabel data
                 st.subheader("📋 Data Paket (dengan fitur)")
                 df_display = df_result[['time', 'src', 'dst', 'protocol', 'packet_length',
-                                        'iat', 'throughput', 'jitter_rfc', 'cluster', 'distance', 'anomaly']].copy()
+                        'iat', 'throughput_raw', 'jitter_rfc', 'cluster', 'distance', 'anomaly']].copy()
+                df_display = df_display.rename(columns={'throughput_raw': 'throughput'})
                 df_display['time'] = df_display['time'].apply(epoch_to_human)
                 df_display['iat'] = df_display['iat'].round(3)
                 df_display['throughput'] = df_display['throughput'].round(1)
